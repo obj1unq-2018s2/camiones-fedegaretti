@@ -1,0 +1,27 @@
+import camion.*
+import cosas.*
+
+describe "pruebas sobre las cosas"{
+
+	test "la cobertura de seguridad con los residuos radioactivos" {
+		residuosRadioactivos.peso(300)
+		embalajeDeSeguridad.cosa(residuosRadioactivos)
+		assert.equals(300, embalajeDeSeguridad.peso())
+		assert.equals(100, embalajeDeSeguridad.peligrosidad())
+	}
+	test "el contenedor portuario con la bateria cargada" {
+		bateriaAntiaerea.estaCargada(true)
+		contenedorPortuario.agregarCosa(bateriaAntiaerea)
+		assert.equals(400,contenedorPortuario.peso())
+		assert.equals(100,contenedorPortuario.peligrosidad())
+	}
+	
+	test "le meto 500 kilos de arena y el contenedor con la bateria cargada"{
+		bateriaAntiaerea.estaCargada(true)
+		contenedorPortuario.agregarCosa(bateriaAntiaerea)
+		arena.peso(500)
+		camion.cargar(arena)
+		camion.cargar(contenedorPortuario)
+		assert.equals(1900, camion.pesoTotal())
+	}
+	}
